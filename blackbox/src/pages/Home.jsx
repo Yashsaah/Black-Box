@@ -103,6 +103,33 @@ export default function Home() {
 
       <hr className="rule" />
 
+      <section className="band shell">
+        <div className="tm__highlight">
+          <div>
+            <Reveal variant="fade">
+              <p className="eyebrow" style={{ color: "var(--signal)" }}>Try the model · interactive</p>
+            </Reveal>
+            <SplitText as="h2" className="display" text="See where the network is looking" />
+            <Reveal variant="fade" delay={200}>
+              <p className="lede">
+                Upload any image and get back a heatmap of the pixels our CNN leaned on to decide.
+                It runs in your browser as a demo, or against our live model once connected.
+              </p>
+            </Reveal>
+            <Reveal variant="rise" delay={300}>
+              <p style={{ marginTop: 28 }}>
+                <Link to="/try" className="pen" style={{ textDecoration: "none" }}>
+                  <span className="pen__swatch" style={{ background: "var(--signal)" }} />
+                  Upload an image →
+                </Link>
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <hr className="rule" />
+
       <section className="band--tight band shell">
         <Reveal variant="wipe">
           <p className="eyebrow">Who runs it</p>

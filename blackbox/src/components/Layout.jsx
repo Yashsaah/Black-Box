@@ -46,6 +46,9 @@ export default function Layout() {
                 {label}
               </NavLink>
             ))}
+            <NavLink to="/try" className="nav__link nav__link--cta">
+              Try the Model
+            </NavLink>
           </nav>
         </div>
       </header>
