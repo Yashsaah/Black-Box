@@ -8,7 +8,9 @@ function Row({ p, delay }) {
       <div className="row">
         <span>
           <span className="row__name">{p.name}</span>
-          <span className="row__role">{p.role} · {p.focus.split(",")[0]}</span>
+          <span className="row__role">
+            {p.focus ? `${p.role} · ${p.focus.split(",")[0]}` : p.role}
+          </span>
         </span>
         <a href={`mailto:${p.email}`}>{p.email}</a>
         <a href={`https://github.com/${p.github}`} target="_blank" rel="noreferrer">

@@ -20,7 +20,7 @@ function Person({ p, delay }) {
             <span className="person__role">{p.role}</span>
           </span>
         </div>
-        <p>{p.focus}</p>
+        {p.focus && <p>{p.focus}</p>}
       </div>
     </Reveal>
   );
@@ -55,7 +55,7 @@ function Feature({ p, compact = false, priority = false }) {
         </figure>
 
         <div className="lead__body">
-          <p className="eyebrow" style={{ marginBottom: 10 }}>{p.kicker || p.role}</p>
+          {p.kicker && <p className="eyebrow" style={{ marginBottom: 10 }}>{p.kicker}</p>}
           <h3 className="display lead__name">{p.name}</h3>
 
           {p.bio.map((para) => (
