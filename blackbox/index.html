@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Black Box — AI research group</title>
     <meta name="description" content="Black Box — six students, two mentors, and the models we trained to find out where learning goes wrong." />
+    <meta name="theme-color" content="#07080a" />
+    <script>
+      // Resolve the theme before first paint so there is no flash of the wrong mode.
+      (function () {
+        var t;
+        try { t = localStorage.getItem("bb-theme"); } catch (e) {}
+        if (t !== "dark" && t !== "light") {
+          t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.dataset.theme = t;
+        document.querySelector('meta[name="theme-color"]')
+          .setAttribute("content", t === "light" ? "#f6f4f0" : "#07080a");
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />

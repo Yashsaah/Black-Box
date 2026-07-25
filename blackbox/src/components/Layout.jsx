@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { NavLink, Outlet, Link, useLocation } from "react-router-dom";
 import useInView from "../lib/useInView";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   ["/projects", "Projects"],
@@ -36,10 +37,13 @@ export default function Layout() {
     <>
       <header className="nav">
         <div className="shell nav__inner">
-          <Link to="/" className="mark">
-            <span className="mark__dot" aria-hidden="true" />
-            Black Box
-          </Link>
+          <div className="nav__lead">
+            <Link to="/" className="mark">
+              <span className="mark__dot" aria-hidden="true" />
+              Black Box
+            </Link>
+            <ThemeToggle />
+          </div>
           <nav className="nav__links" aria-label="Main">
             {links.map(([to, label]) => (
               <NavLink key={to} to={to} className="nav__link">

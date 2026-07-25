@@ -1,4 +1,19 @@
 :root {
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Newsreader", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --shell: 1180px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
+
+/* ---------- palettes ----------
+   Dark is the default so the site still renders correctly if the
+   pre-paint script in index.html never runs. */
+
+:root,
+:root[data-theme="dark"] {
   --bg: #07080a;
   --panel: #0c0e12;
   --panel-2: #11141a;
@@ -12,16 +27,57 @@
   --pen-fit: #35d0b6;
   --pen-over: #f2569a;
   --signal: #ff6b4a;
+  --signal-soft: rgba(255, 107, 74, 0.16);
+  --signal-line: rgba(255, 107, 74, 0.5);
 
-  --display: "Bricolage Grotesque", system-ui, sans-serif;
-  --body: "Newsreader", Georgia, serif;
-  --mono: "JetBrains Mono", ui-monospace, monospace;
-
-  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
-  --shell: 1180px;
-  --gutter: clamp(20px, 5vw, 56px);
+  --nav-bg: rgba(7, 8, 10, 0.72);
+  --scrim-mid: rgba(7, 8, 10, 0.55);
+  --dot-glow: 0 0 12px var(--signal);
+  --tile-blend: screen;
+  --tile-glow: 0.12;
+  --edge-boost: 1;
   color-scheme: dark;
 }
+
+/* Warm paper rather than flat white — the graph-paper grid needs a ground
+   to sit on, and pure #fff blows out the plot inks. */
+:root[data-theme="light"] {
+  --bg: #f6f4f0;
+  --panel: #fdfcfa;
+  --panel-2: #eeebe4;
+  --grid: rgba(18, 22, 28, 0.055);
+  --grid-strong: rgba(18, 22, 28, 0.135);
+  --ink: #14171c;
+  --muted: #545a64;
+  --faint: #676d78;
+
+  /* Pens re-mixed for paper — the dark-mode inks all land under 4.5:1 here. */
+  --pen-under: #9a5c07;
+  --pen-fit: #087a68;
+  --pen-over: #c8256a;
+  --signal: #c93a15;
+  --signal-soft: rgba(201, 58, 21, 0.13);
+  --signal-line: rgba(201, 58, 21, 0.42);
+
+  --nav-bg: rgba(246, 244, 240, 0.78);
+  --scrim-mid: rgba(246, 244, 240, 0.58);
+  --dot-glow: 0 0 0 3px rgba(201, 58, 21, 0.15);
+  --tile-blend: multiply;
+  --tile-glow: 0.1;
+  --edge-boost: 2.4;
+  color-scheme: light;
+}
+
+/* Cross-fade the palette on switch. The toggle's own parts are excluded so
+   the knob keeps its slide instead of inheriting this timing. */
+:root.theming,
+:root.theming *:not(.tt__knob):not(.tt__ico) {
+  transition: background-color 0.38s var(--ease), border-color 0.38s var(--ease),
+    color 0.38s var(--ease), box-shadow 0.38s var(--ease), fill 0.38s var(--ease),
+    stroke 0.38s var(--ease) !important;
+}
+
+::selection { background: var(--signal-soft); color: var(--ink); }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -111,12 +167,13 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(7, 8, 10, 0.72);
+  background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--grid-strong);
 }
 
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 66px; }
+.nav__lead { display: flex; align-items: center; gap: 14px; }
 
 .mark {
   font-family: var(--display);
@@ -132,8 +189,58 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
 .mark__dot {
   width: 9px; height: 9px;
   background: var(--signal);
-  box-shadow: 0 0 12px var(--signal);
+  box-shadow: var(--dot-glow);
   flex: none;
+}
+
+/* ---------- theme toggle ---------- */
+
+.tt {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: stretch;
+  width: 58px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--grid-strong);
+  border-radius: 2px;
+  background: var(--panel);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.25s, background 0.25s;
+}
+.tt:hover { border-color: var(--faint); background: var(--panel-2); }
+
+.tt__knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 22px;
+  border-radius: 1px;
+  background: var(--signal-soft);
+  box-shadow: inset 0 0 0 1px var(--signal-line);
+  transition: transform 0.42s var(--ease);
+}
+.tt[aria-checked="true"] .tt__knob { transform: translateX(28px); }
+
+.tt__ico {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  color: var(--faint);
+  opacity: 0.5;
+  transform: scale(0.86);
+  transition: color 0.3s, opacity 0.3s, transform 0.42s var(--ease);
+}
+.tt[aria-checked="false"] .tt__ico--sun,
+.tt[aria-checked="true"] .tt__ico--moon {
+  color: var(--signal);
+  opacity: 1;
+  transform: none;
 }
 
 .nav__links { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -175,7 +282,7 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(90deg, var(--bg) 24%, rgba(7, 8, 10, 0.55) 48%, transparent 72%);
+  background: linear-gradient(90deg, var(--bg) 24%, var(--scrim-mid) 48%, transparent 72%);
 }
 
 @media (max-width: 900px) { .hero__scrim { display: none; } }
@@ -296,9 +403,9 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
   opacity: 0;
   transition: opacity 0.4s;
   background: radial-gradient(240px circle at var(--gx, 50%) var(--gy, 50%), var(--pen), transparent 68%);
-  mix-blend-mode: screen;
+  mix-blend-mode: var(--tile-blend);
 }
-.tile:hover::after { opacity: 0.12; }
+.tile:hover::after { opacity: var(--tile-glow); }
 
 .tag {
   font-family: var(--mono);

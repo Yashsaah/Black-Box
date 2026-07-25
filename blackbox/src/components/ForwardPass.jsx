@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTheme } from "../lib/theme";
 
 const LAYERS = [4, 7, 7, 3];
 const CYCLE = 5200; // ms for one full pass, input to output
@@ -15,6 +16,9 @@ const ease = (t) => t * t * (3 - 2 * t);
 export default function ForwardPass() {
   const wrap = useRef(null);
   const cv = useRef(null);
+  // Weights outlive a theme swap, so the network doesn't reshuffle on toggle.
+  const wires = useRef([]);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = cv.current;
@@ -26,11 +30,13 @@ export default function ForwardPass() {
     const css = getComputedStyle(document.documentElement);
     const SIGNAL = hex(css.getPropertyValue("--signal") || "#ff6b4a");
     const DIM = hex(css.getPropertyValue("--muted") || "#878c94");
+    // Hairlines that read on near-black need more weight on paper.
+    const EDGE = parseFloat(css.getPropertyValue("--edge-boost")) || 1;
 
     let w = 0;
     let h = 0;
     let nodes = [];
-    let edges = [];
+    let edges = wires.current;
     let raf = 0;
     let cycle = -1;
 
@@ -102,7 +108,7 @@ export default function ForwardPass() {
       for (const e of edges) {
         const a = nodes[e.l][e.i];
         const b = nodes[e.l + 1][e.j];
-        ctx.strokeStyle = rgba(DIM, 0.05 + Math.abs(e.w) * 0.05);
+        ctx.strokeStyle = rgba(DIM, (0.05 + Math.abs(e.w) * 0.05) * EDGE);
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
@@ -174,7 +180,7 @@ export default function ForwardPass() {
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div className="fp" ref={wrap}>
