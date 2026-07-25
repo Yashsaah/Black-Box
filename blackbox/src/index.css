@@ -36,6 +36,8 @@
   --tile-blend: screen;
   --tile-glow: 0.12;
   --edge-boost: 1;
+  /* Takes the glare off bright portraits sitting on near-black. */
+  --photo-filter: brightness(0.95) contrast(1.02);
   color-scheme: dark;
 }
 
@@ -65,6 +67,7 @@
   --tile-blend: multiply;
   --tile-glow: 0.1;
   --edge-boost: 2.4;
+  --photo-filter: none;
   color-scheme: light;
 }
 
@@ -452,6 +455,152 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
   color: var(--signal);
 }
 .person p { font-size: 0.95rem; color: var(--muted); margin: 12px 0 0; }
+
+.person__photo {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 1px solid var(--grid-strong);
+  filter: var(--photo-filter);
+  flex: none;
+}
+
+/* ---------- lead mentor ---------- */
+
+.lead {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: clamp(26px, 4vw, 54px);
+  align-items: start;
+  background: var(--panel);
+  border: 1px solid var(--grid-strong);
+  border-left: 3px solid var(--signal);
+  padding: clamp(24px, 3.6vw, 42px);
+}
+
+@media (max-width: 820px) {
+  .lead { grid-template-columns: 1fr; }
+  /* Cap the portrait so it never eats a whole phone screen. */
+  .lead__fig { max-width: 260px; }
+}
+
+.lead + .lead { margin-top: 20px; }
+
+.lead__fig { margin: 0; }
+
+.lead__frame { position: relative; }
+
+.lead__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border: 1px solid var(--grid-strong);
+  background: var(--panel-2);
+  filter: var(--photo-filter);
+  transition: filter 0.3s;
+}
+
+/* Registration marks, echoing the corner ticks on the hero canvas. */
+.lead__tick {
+  position: absolute;
+  width: 9px; height: 9px;
+  border: 1px solid var(--signal);
+  opacity: 0.55;
+}
+.lead__tick--tl { top: -4px; left: -4px; border-right: 0; border-bottom: 0; }
+.lead__tick--tr { top: -4px; right: -4px; border-left: 0; border-bottom: 0; }
+.lead__tick--bl { bottom: -4px; left: -4px; border-right: 0; border-top: 0; }
+.lead__tick--br { bottom: -4px; right: -4px; border-left: 0; border-top: 0; }
+
+.lead__fig figcaption {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-top: 1px solid var(--grid-strong);
+  margin-top: 12px;
+  padding-top: 10px;
+}
+
+.lead__name {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0 0 16px;
+}
+
+.lead__para {
+  color: var(--muted);
+  font-size: 1.02rem;
+  margin: 0 0 0.9em;
+  max-width: 62ch;
+}
+.lead__para:last-of-type { margin-bottom: 0; }
+
+.lead__label {
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  margin: 24px 0 10px;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+
+.chip {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--grid-strong);
+  border-radius: 2px;
+  padding: 6px 11px;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.chip:hover { color: var(--ink); border-color: var(--faint); background: var(--panel-2); }
+
+.lead__off {
+  border-top: 1px solid var(--grid-strong);
+  margin: 26px 0 0;
+  padding-top: 18px;
+  color: var(--faint);
+  font-size: 0.96rem;
+  max-width: 62ch;
+}
+
+/* ---------- compact feature (members) ----------
+   Half-width, so two members read in a single horizontal glance. Everything
+   steps down a notch against the mentor card, portrait included. */
+
+.features { display: grid; gap: 20px; align-items: start; }
+
+@media (min-width: 1080px) {
+  .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.features > * { height: 100%; }
+
+.lead--compact {
+  height: 100%;
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+  gap: clamp(18px, 2vw, 24px);
+  padding: clamp(20px, 2.2vw, 28px);
+}
+
+.lead--compact .lead__name { font-size: clamp(1.25rem, 2vw, 1.5rem); margin-bottom: 12px; }
+.lead--compact .lead__para { font-size: 0.92rem; margin-bottom: 0.75em; }
+.lead--compact .lead__label { margin: 18px 0 8px; font-size: 0.64rem; }
+.lead--compact .chip { font-size: 0.63rem; padding: 5px 9px; }
+.lead--compact .lead__off { margin-top: 18px; padding-top: 14px; font-size: 0.88rem; }
+.lead--compact .lead__tick { width: 7px; height: 7px; }
+.lead--compact .lead__fig figcaption { font-size: 0.64rem; margin-top: 10px; padding-top: 8px; }
+
+/* Below the two-up breakpoint the portrait would otherwise stretch. */
+@media (max-width: 820px) {
+  .lead--compact { grid-template-columns: 1fr; }
+  .lead--compact .lead__fig { max-width: 190px; }
+}
 
 /* ---------- detail ---------- */
 

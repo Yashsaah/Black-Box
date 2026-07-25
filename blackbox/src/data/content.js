@@ -144,6 +144,26 @@ export const projects = [
 // PLACEHOLDER emails and GitHub handles — swap these for the real ones.
 export const team = [
   {
+    name: "Garima Bartaula",
+    role: "Member",
+    featured: true,
+    kicker: "Data & reproducibility",
+    affiliation: "Recent A-Level graduate",
+    photo: "/portraits/garima-bartaula.jpg",
+    photo2x: "/portraits/garima-bartaula@2x.jpg",
+    focus: "Data collection, splits, and reproducibility.",
+    bio: [
+      "Garima is a recent A-Level graduate, currently in the business of finding what she likes and following her curiosity. Her world swings between literature, physics, and mathematics — anything that balances deep creative thought with sharp logic.",
+      "She takes complex ideas, quietly pieces them together, and turns them into clear, structured plans. On this team that shows up as data collection, splits, and the reproducibility everyone else leans on.",
+    ],
+    areasLabel: "Curious about",
+    areas: ["Literature", "Physics", "Mathematics", "Structured thinking"],
+    offHours:
+      "Otherwise she's lost in a good book, collecting random facts. As the saying goes, we write to live life twice — she takes that fairly literally.",
+    email: "garima@blackbox.dev",
+    github: "garimabartaula",
+  },
+  {
     name: "Yash Kumar Sah",
     role: "Member",
     focus: "Regression, model selection, and the fit study.",
@@ -151,25 +171,11 @@ export const team = [
     github: "yashkumarsah",
   },
   {
-    name: "Nimansh Dahal",
-    role: "Member",
-    focus: "Convolutional nets and the vision pipeline.",
-    email: "nimansh@blackbox.dev",
-    github: "nimanshdahal",
-  },
-  {
     name: "Pragyan Devkota",
     role: "Member",
     focus: "Baselines, feature scaling, evaluation discipline.",
     email: "pragyan@blackbox.dev",
     github: "pragyandevkota",
-  },
-  {
-    name: "Garima Bartaula",
-    role: "Member",
-    focus: "Data collection, splits, and reproducibility.",
-    email: "garima@blackbox.dev",
-    github: "garimabartaula",
   },
   {
     name: "Arshiya Shah",
@@ -185,19 +191,45 @@ export const team = [
     email: "kripesh@blackbox.dev",
     github: "kripeshrajsharma",
   },
+  {
+    name: "Nimansh Dahal",
+    role: "Member",
+    focus: "Convolutional nets and the vision pipeline.",
+    email: "nimansh@blackbox.dev",
+    github: "nimanshdahal",
+  },
 ];
 
 export const mentors = [
   {
     name: "Aadim Nepal",
     role: "Mentor",
-    focus: "Guides the research direction and reviews methodology.",
+    lead: true,
+    kicker: "Lead mentor",
+    affiliation: "Research Assistant · NYU Abu Dhabi",
+    photo: "/portraits/aadim-nepal.jpg",
+    photo2x: "/portraits/aadim-nepal@2x.jpg",
+    focus: "Energy-based world models, and what biology can teach a planner.",
+    bio: [
+      "Aadim is a Research Assistant at NYU Abu Dhabi, where he works on energy-based world models. His research explores how principles from neuroscience and biology can inform AI systems that plan, predict, and generalise the way biological systems do.",
+      "He has published at top conferences and workshops including EMNLP and NeurIPS, with work spanning LLM reasoning, layer-level interpretability, and multimodal deep learning for medical AI.",
+    ],
+    areasLabel: "Works on",
+    areas: [
+      "Energy-based world models",
+      "Neuro-inspired AI",
+      "LLM reasoning",
+      "Interpretability",
+      "Medical imaging",
+    ],
+    offHours:
+      "Outside the lab it's travel and swimming. When he's not on a trip he's usually in the pool, on a tennis court, or on the track.",
     email: "aadim@blackbox.dev",
     github: "aadimnepal",
   },
   {
     name: "Ashok Timsina",
-    role: "Mentor",
+    role: "Peer mentor",
     focus: "Advises on evaluation, statistics, and writeups.",
     email: "ashok@blackbox.dev",
     github: "ashoktimsina",
