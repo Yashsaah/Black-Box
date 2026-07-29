@@ -644,12 +644,47 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
 .footer {
   border-top: 1px solid var(--grid-strong);
   margin-top: 40px;
-  padding-block: 44px;
+  padding-block: clamp(48px, 7vw, 88px);
   font-family: var(--mono);
   font-size: 0.74rem;
   color: var(--muted);
+  overflow: hidden;
 }
-.footer__inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.footer__inner { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; text-align: center; }
+
+/* Colophon wordmark: outlined + solid, the same hairline-vs-fill contrast
+   the plots and figure frames use everywhere else on the site. */
+.footer__word {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 7vw, 4.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.footer__outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--faint);
+}
+
+/* Without text-stroke, transparent fill would erase the word entirely. */
+@supports not ((-webkit-text-stroke: 1px red)) {
+  .footer__outline { color: var(--faint); }
+}
+
+.footer__solid { color: var(--ink); position: relative; }
+
+.footer__dot {
+  position: absolute;
+  right: -0.42em;
+  bottom: 0.16em;
+  width: 0.14em;
+  height: 0.14em;
+  background: var(--signal);
+  box-shadow: var(--dot-glow);
+}
 
 /* ---------- motion layer ---------- */
 

@@ -164,6 +164,17 @@ export const team = [
   {
     name: "Yash Kumar Sah",
     role: "Member",
+    featured: true,
+    affiliation: "Recent A-Level graduate",
+    photo: "/portraits/yash-kumar-sah.jpg",
+    photo2x: "/portraits/yash-kumar-sah@2x.jpg",
+    bio: [
+      "Yash is a recent A-Level graduate with a growing fascination for artificial intelligence, mathematics, and the technologies shaping our future. Lately he has been spending most of his time building AI projects and looking for unconventional ways to solve complex problems. He finds the greatest satisfaction in challenges that demand logical thinking and creativity at once.",
+    ],
+    areasLabel: "Curious about",
+    areas: ["Artificial intelligence", "Mathematics", "Emerging tech", "Problem solving"],
+    offHours:
+      "When he's not immersed in research or mathematics, you'll probably find him exploring new places and enjoying time with friends.",
     email: "yash@blackbox.dev",
     github: "yashkumarsah",
   },

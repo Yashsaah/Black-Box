@@ -63,9 +63,13 @@ export default function Layout() {
 
       <footer className="footer">
         <div className="shell footer__inner">
-          <span>Black Box — six members, two mentors.</span>
-          <span>Built with React + Vite. Every plot on this site is our own data.</span>
-          <Link to="/contact" style={{ color: "var(--signal)" }}>Get in touch →</Link>
+          <p className="footer__word">
+            <span className="footer__outline">Team</span>{" "}
+            <span className="footer__solid">
+              Black-Box
+              <i className="footer__dot" aria-hidden="true" />
+            </span>
+          </p>
         </div>
       </footer>
     </>
