@@ -186,13 +186,13 @@ export const team = [
     photo: "/portraits/nimansh-dahal.jpg",
     photo2x: "/portraits/nimansh-dahal@2x.jpg",
     bio: [
-      "“Understand the fundamentals.” That phrase echoes in Nimansh's head so often he has started charging it rent. He has a knack for finding the interesting bits inside topics he once dismissed as “boring.”",
-      "Give him a single equation or one line from a research paper and he will happily disappear into it for the entire day, emerging only for snacks and mild enlightenment. Physics and mathematics are his natural habitat.",
+      "“Understand the fundamentals.” That phrase echoes in my head so often I've started charging it rent. Hi everyone—I'm Nimansh Dahal, with a knack for finding the interesting bits inside topics I once dismissed as “boring.”",
+      "Give me a single equation or one line from a research paper, and I'll happily disappear into it for the entire day, emerging only for snacks and mild enlightenment. Physics and mathematics are my natural habitat.",
     ],
     areasLabel: "Curious about",
     areas: ["Physics", "Mathematics", "First principles", "Research papers"],
     offHours:
-      "Off the clock you'll find him watching MMA, playing cricket down the road, and building a little network of people who nerd out over the same things he does.",
+      "Off the clock, you'll find me watching MMA, playing cricket down the road, and building a little network of people who nerd out over the same things I do.",
     motto: "Let's get more passionate each day.",
     email: "nimansh@blackbox.dev",
     github: "nimanshdahal",
