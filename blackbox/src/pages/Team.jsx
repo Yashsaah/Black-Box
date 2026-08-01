@@ -72,6 +72,7 @@ function Feature({ p, compact = false, priority = false }) {
           )}
 
           {p.offHours && <p className="lead__off">{p.offHours}</p>}
+          {p.motto && <p className="lead__motto">“{p.motto}”</p>}
         </div>
       </article>
     </Reveal>

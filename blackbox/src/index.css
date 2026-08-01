@@ -569,6 +569,15 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
   max-width: 62ch;
 }
 
+.lead__motto {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+  color: var(--signal);
+  margin: 14px 0 0;
+}
+
 /* ---------- compact feature (members) ----------
    Half-width, so two members read in a single horizontal glance. Everything
    steps down a notch against the mentor card, portrait included. */
@@ -593,6 +602,7 @@ h3.display { font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.15; }
 .lead--compact .lead__label { margin: 18px 0 8px; font-size: 0.64rem; }
 .lead--compact .chip { font-size: 0.63rem; padding: 5px 9px; }
 .lead--compact .lead__off { margin-top: 18px; padding-top: 14px; font-size: 0.88rem; }
+.lead--compact .lead__motto { font-size: 0.95rem; margin-top: 12px; }
 .lead--compact .lead__tick { width: 7px; height: 7px; }
 .lead--compact .lead__fig figcaption { font-size: 0.64rem; margin-top: 10px; padding-top: 8px; }
 

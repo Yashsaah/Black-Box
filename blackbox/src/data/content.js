@@ -179,10 +179,40 @@ export const team = [
     github: "yashkumarsah",
   },
   {
-    name: "Pragyan Devkota",
+    name: "Nimansh Dahal",
     role: "Member",
-    email: "pragyan@blackbox.dev",
-    github: "pragyandevkota",
+    featured: true,
+    affiliation: "US applicant",
+    photo: "/portraits/nimansh-dahal.jpg",
+    photo2x: "/portraits/nimansh-dahal@2x.jpg",
+    bio: [
+      "“Understand the fundamentals.” That phrase echoes in Nimansh's head so often he has started charging it rent. He is a US applicant with an eagerness for finding the interesting bits inside topics he had previously filed under “boring”.",
+      "Give him a single equation or one line from a research paper and he will happily disappear into it for the entire day, emerging only for snacks and mild enlightenment. Physics and mathematics are his natural habitat.",
+    ],
+    areasLabel: "Curious about",
+    areas: ["Physics", "Mathematics", "First principles", "Research papers"],
+    offHours:
+      "Off the clock you'll find him watching MMA, playing cricket down the road, and building a little network of people who nerd out over the same things he does.",
+    motto: "Let's get more passionate each day.",
+    email: "nimansh@blackbox.dev",
+    github: "nimanshdahal",
+  },
+  {
+    name: "Kripesh Raj Sharma",
+    role: "Member",
+    featured: true,
+    affiliation: "Student",
+    photo: "/portraits/kripesh-raj-sharma.jpg",
+    bio: [
+      "Kripesh is a student trying to learn about computer science, economics, politics, and everything in between.",
+      "Right now he is working towards understanding artificial intelligence and its underlying processes through mechanistic interpretability — like playing cipher with the black box.",
+    ],
+    areasLabel: "Curious about",
+    areas: ["Computer science", "Economics", "Politics", "Mechanistic interpretability"],
+    offHours:
+      "Writing is his other passion; the last pages of his notebooks are quietly reserved for poems in handwriting only he can decode.",
+    email: "kripesh@blackbox.dev",
+    github: "kripeshrajsharma",
   },
   {
     name: "Arshiya Shah",
@@ -191,16 +221,10 @@ export const team = [
     github: "arshiyashah",
   },
   {
-    name: "Kripesh Raj Sharma",
+    name: "Pragyan Devkota",
     role: "Member",
-    email: "kripesh@blackbox.dev",
-    github: "kripeshrajsharma",
-  },
-  {
-    name: "Nimansh Dahal",
-    role: "Member",
-    email: "nimansh@blackbox.dev",
-    github: "nimanshdahal",
+    email: "pragyan@blackbox.dev",
+    github: "pragyandevkota",
   },
 ];
 
