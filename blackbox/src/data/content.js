@@ -186,7 +186,7 @@ export const team = [
     photo: "/portraits/nimansh-dahal.jpg",
     photo2x: "/portraits/nimansh-dahal@2x.jpg",
     bio: [
-      "“Understand the fundamentals.” That phrase echoes in Nimansh's head so often he has started charging it rent. He is a US applicant with an eagerness for finding the interesting bits inside topics he had previously filed under “boring”.",
+      "“Understand the fundamentals.” That phrase echoes in Nimansh's head so often he has started charging it rent. He has a knack for finding the interesting bits inside topics he once dismissed as “boring.”",
       "Give him a single equation or one line from a research paper and he will happily disappear into it for the entire day, emerging only for snacks and mild enlightenment. Physics and mathematics are his natural habitat.",
     ],
     areasLabel: "Curious about",
